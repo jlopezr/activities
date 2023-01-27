@@ -2,6 +2,7 @@ package dsa.app1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,16 @@ public class Activity1 extends AppCompatActivity {
 
     public void onClick(View view) {
         Intent i = new Intent(this, Activity2.class);
+        String data = input.getText().toString();
+        i.putExtra("input",data);
+        //startActivity(i);
+        startActivityForResult(i, Activity2.REQUEST_CODE_1);
+    }
+
+    public void onClick2(View view) {
+        Intent i = new Intent();
+        i.setComponent(new ComponentName("dsa.app2", "dsa.app2.Activity3"));
+
         String data = input.getText().toString();
         i.putExtra("input",data);
         //startActivity(i);
