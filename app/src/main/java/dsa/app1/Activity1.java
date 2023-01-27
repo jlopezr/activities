@@ -26,6 +26,19 @@ public class Activity1 extends AppCompatActivity {
         Intent i = new Intent(this, Activity2.class);
         String data = input.getText().toString();
         i.putExtra("input",data);
-        startActivity(i);
+        //startActivity(i);
+        startActivityForResult(i, Activity2.REQUEST_CODE_1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Activity2.REQUEST_CODE_1 && resultCode == RESULT_OK && data != null) {
+            String input2 = data.getStringExtra("input2");
+            result.setText("Result from Activity2 is: "+input2);
+        } else {
+            result.setText("Activity result received but not correct!");
+        }
     }
 }
