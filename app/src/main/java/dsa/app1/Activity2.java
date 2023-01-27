@@ -16,7 +16,13 @@ public class Activity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
         result = findViewById(R.id.result);
-        result.setText("Press Ok to return to Activity1");
+
+        String input = getIntent().getStringExtra("input");
+        if (input != null) {
+            result.setText("Input is: "+input +"\r\nPress Ok to return to Activity1");
+        } else {
+            result.setText("No input from Activity1 \r\nPress Ok to return to Activity1");
+        }
     }
 
     public void onClick(View view) {
